@@ -17,13 +17,17 @@ public class Storage {
     private int overflowCounter;
     private boolean productionComplete;
 
-    public Storage(ArrayBlockingQueue<Integer> queue, int fetchedCounter, int storedCounter, int underflowCounter, int overflowCounter, boolean productionComplete) {
-        this.queue = queue;
+    public Storage() {
+        this.queue = new ArrayBlockingQueue<>(10);
+    }
+
+    public Storage(int fetchedCounter, int storedCounter, int underflowCounter, int overflowCounter) {
+        this.queue = new ArrayBlockingQueue<>(10);
         this.fetchedCounter = fetchedCounter;
         this.storedCounter = storedCounter;
         this.underflowCounter = underflowCounter;
         this.overflowCounter = overflowCounter;
-        this.productionComplete = productionComplete;
+        this.productionComplete = false;
     }
 
     public synchronized boolean put(Integer data) throws InterruptedException {

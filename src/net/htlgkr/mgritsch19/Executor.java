@@ -21,7 +21,7 @@ public class Executor {
     }
 
     public Result run(int t1, int t2, int t3, int t4) throws Exception {
-        Storage s = new Storage();
+        Storage s = new Storage(t1, t2, t3, t4);
 
         ExecutorService threadPool = Executors.newFixedThreadPool(3);
 
@@ -32,7 +32,7 @@ public class Executor {
         threadPool.execute(c2);
 
         Producer p = new Producer("P", s, t3, t4);
-       
+
         Future producerStatus1 = threadPool.submit(p);
         producerStatus1.get();
 

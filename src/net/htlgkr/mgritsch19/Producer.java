@@ -5,6 +5,7 @@
  */
 package net.htlgkr.mgritsch19;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,7 +24,7 @@ public class Producer implements Runnable {
         this.storage = storage;
         this.sleepTime = sleepTime;
         this.numberOfItems = numberOfItems;
-        sent = new Arraylist<>();
+        sent = new ArrayList<>();
     }
 
     // implement this

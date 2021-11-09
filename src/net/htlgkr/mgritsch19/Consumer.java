@@ -7,6 +7,8 @@ package net.htlgkr.mgritsch19;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Consumer implements Runnable {
 
@@ -31,8 +33,17 @@ public class Consumer implements Runnable {
 
     @Override
     public void run() {
-        while (storage.isProductionComplete() == false && storage.getStoredCounter() != 0) {
-
+        while (storage.isProductionComplete() == false) {
+            if (storage.getStoredCounter() > 0) {
+                break;
+            } else {
+                received.add(storage.get());
+            }
+            try {
+                Thread.sleep(sleepTime);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Consumer.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }
