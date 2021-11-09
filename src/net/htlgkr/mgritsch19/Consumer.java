@@ -37,6 +37,12 @@ public class Consumer implements Runnable {
             if (storage.getStoredCounter() > 0) {
                 break;
             } else {
+                int i = storage.get();
+                String s = String.valueOf(i);
+                if (s != null) {
+                    received.add(i);
+
+                }
                 received.add(storage.get());
             }
             try {

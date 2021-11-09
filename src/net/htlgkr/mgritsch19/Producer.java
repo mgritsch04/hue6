@@ -37,10 +37,12 @@ public class Producer implements Runnable {
         for (int i = 0; i < numberOfItems; i++) {
             try {
                 storage.put(i);
+                sent.add(i);
             } catch (InterruptedException ex) {
                 try {
                     Thread.sleep(sleepTime);
                     storage.put(i);
+                    sent.add(i);
 
                 } catch (InterruptedException ex1) {
                     Logger.getLogger(Producer.class.getName()).log(Level.SEVERE, null, ex1);
